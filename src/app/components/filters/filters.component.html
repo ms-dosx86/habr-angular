@@ -1,0 +1,21 @@
+<div class="filters">
+  <select
+    data-test-id="product-filter"
+    [ngModel]="product$ | async"
+    (ngModelChange)="selectProduct($event)"
+  >
+    @for (product of products; track product.value) {
+      <option [value]="product.value">{{ product.label }}</option>
+    }
+  </select>
+
+  <select
+    data-test-id="status-filter"
+    [ngModel]="status$ | async"
+    (ngModelChange)="selectStatus($event)"
+  >
+    @for (status of statuses; track status.value) {
+      <option [value]="status.value">{{ status.label }}</option>
+    }
+  </select>
+</div>

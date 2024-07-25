@@ -1,0 +1,41 @@
+<div class="header">
+  <app-filters />
+  <button
+    data-test-id="refresh-logs-button"
+    (click)="refreshLogs()"
+    class="header__refresh-btn"
+  >
+    Refresh Logs
+  </button>
+</div>
+
+@let logs = logs$ | async;
+
+@if (logs?.length) {
+  <table class="table" data-test-id="attack-logs-table">
+    <thead>
+      <tr>
+        @let sortModel = (sort$ | async)!;
+
+        @for (col of columns; track col) {
+          <th class="table__header" (click)="sort(col, sortModel)">
+            {{ col }} <app-sort-arrow [sort]="sortModel" [field]="col" />
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (log of logs$ | async; track log) {
+        <tr>
+          <td>{{ log.date }}</td>
+          <td>{{ log.type }}</td>
+          <td>{{ log.product }}</td>
+          <td>{{ log.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <div class="no-data">No data</div>
+}

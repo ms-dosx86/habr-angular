@@ -1,0 +1,16 @@
+export const REFRESH_MOCK_DATA = {
+  new_logs: [
+    {
+      date: "2023-07-11",
+      type: "Ransomware",
+      product: "EASM",
+      status: "detected",
+    },
+    {
+      date: "2023-07-12",
+      type: "DDoS",
+      product: "AntiDDoS",
+      status: "mitigated",
+    },
+  ],
+};
