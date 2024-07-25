@@ -16,4 +16,4 @@ Test project for Habr Career.
 
 ## Deployment
 
-Via Vercel
+Via Vercel - https://habr-angular.vercel.app/
